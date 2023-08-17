@@ -6,12 +6,15 @@
 return {
   -- first key is the mode
   n = {
+        -- normal mode mappings
     -- second key is the lefthand side of the map
     -- mappings seen under group name "Buffer"
     ["<leader>bn"] = { "<cmd>tabnew<cr>", desc = "New tab" },
     ["<leader>bD"] = {
       function()
-        require("astronvim.utils.status").heirline.buffer_picker(function(bufnr) require("astronvim.utils.buffer").close(bufnr) end)
+        require("astronvim.utils.status").heirline.buffer_picker(
+          function(bufnr) require("astronvim.utils.buffer").close(bufnr) end
+        )
       end,
       desc = "Pick to close",
     },
@@ -20,9 +23,14 @@ return {
     ["<leader>b"] = { name = "Buffers" },
     -- quick save
     -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
+    ["Y"] = { "yy" },
+    ["<F8>"] = { ":se spell!<CR>" },
+    ["<F2>"] = { ":se paste!<CR>" },
   },
-  t = {
+  t = { -- terminal mode mappings
     -- setting a mapping to false will disable it
     -- ["<esc>"] = false,
   },
+  -- i is for insert mode
+  -- v is for visual mode
 }
